@@ -1,52 +1,59 @@
 import random
-computer=random.randint(0,2)
 def game():
-    r=1;user_score=0;computer_score=0
-    while r<=3:
-        num=int(input("press 0 for rock,1 for paper,2 for scissors"" if it is draw you have one more chance"))
+    rounds=0;user_score=0;computer_score=0
+    print("Welcome to Rock Paper Scissors!")
+    print("rules:\n1)Rock beats Scissor\n2)Paper beats Rock\n3)Scissors beats Paper")
+    print("Choose these keys to play\n 0 for rock,1 for paper,2 for scissors")
+    while rounds <= 2:
+        computer = random.randint(0, 2)
+        num=input("enter your choice:")
         if num==computer:
             print("draw")
-            print("computer choice", computer)
-            continue
+            rounds+=1
         if num==0:
             if computer==2:
+                print("computer choice:", computer)
                 print("you won")
-                print("computer choice",computer)
                 user_score+=1
-                r+=1
+                rounds+=1
             else:
+                print("computer choice:", computer)
                 print("you lost")
-                print("computer choice",computer)
                 computer_score+=1
-                r+=1
+                rounds+=1
         elif num==1:
             if computer==0:
+                print("computer choice:", computer)
                 print("you won")
-                print("computer choice", computer)
                 user_score+=1
-                r+=1
+                rounds+=1
             else:
+                print("computer choice:", computer)
                 print("you lost")
-                print("computer choice", computer)
                 computer_score+=1
-                r+=1
+                rounds+=1
         else:
             if computer==1:
+                print("computer choice:", computer)
                 print("you won")
-                print("computer choice", computer)
                 user_score+=1
-                r+=1
+                rounds+=1
             else:
+                print("computer choice:", computer)
                 print("you lost")
-                print("computer choice", computer)
                 computer_score+=1
-                r+=1
-        if r==4:
-            if user_score>computer_score:
-                print("you won play again")
-            elif user_score==computer_score:
-                print("draw")
+                rounds+=1
+        if rounds==3:
+            if user_score > computer_score:
+                print("you won this game")
+            elif user_score == computer_score:
+                print("draw match")
             else:
                 print("you lost better lusk next time")
-    print("computer_score:",computer_score,"user_scpre:",user_score)
+    print("\ncomputer_score:",computer_score,"\nuser_score:",user_score)
+    again=input("Do you want to play again? \nsay yes or no")
+    if again=="yes":
+        print(game())
+    else:
+        print("Thank you for playing")
 print(game())
